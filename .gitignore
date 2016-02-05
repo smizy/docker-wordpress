@@ -1,2 +1,3 @@
+*.bak
 docker-compose-mh.yml
 README.md.s

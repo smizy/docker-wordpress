@@ -13,7 +13,7 @@ $ eval $(docker-machine env wordpress)
 $ docker-machine ssh wordpress "sudo mkdir /letsencrypt-webroot && sudo chown -R 100 /letsencrypt-webroot"
 $ docker-machine ssh wordpress sudo openssl dhparam -out /etc/ssl/private/dhparam.pem 2048
 
-$ sed -i -e 's/<YOUR_FQDN>/sub.example.com/g'  letsencrypt/server.conf web/server.conf web/ssl.conf 
+$ sed -i .bak -e 's/<YOUR_FQDN>/sub.example.com/g'  letsencrypt/server.conf web/server.conf web/ssl.conf 
 $ export LETSENCRYPT_DOMAINS=sub.example.com
 $ export LETSENCRYPT_EMAIL=operator@example.com
 
