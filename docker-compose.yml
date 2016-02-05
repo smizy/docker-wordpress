@@ -1,0 +1,38 @@
+# 
+web:
+  build: web
+  links:
+   - php:php
+  ports:
+   - 80:80
+   - 443:443
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /letsencrypt-webroot:/letsencrypt-webroot
+    - /etc/ssl/private:/etc/ssl/private:ro
+    - /etc/letsencrypt:/etc/letsencrypt
+  volumes_from:
+   - php
+      
+php:
+  build: php
+  links:
+   - mysql:mysql 
+  ports:
+   - 9000:9000
+  volumes:
+    - /etc/localtime:/etc/localtime:ro 
+  environment:
+    LANG: ja_JP.UTF8
+    MYSQL_DATABASE: ${MYSQL_DATABASE} 
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    MYSQL_HOST: ${MYSQL_HOST}
+    
+mysql:
+  image: k0st/alpine-mariadb
+  environment:
+    LANG: ja_JP.UTF-8
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}

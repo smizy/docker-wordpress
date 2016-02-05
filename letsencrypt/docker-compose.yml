@@ -1,0 +1,19 @@
+# 
+letsencrypt:
+  image: quay.io/letsencrypt/letsencrypt:latest
+  stdin_open: true
+  volumes: 
+    - "/etc/letsencrypt:/etc/letsencrypt"
+    - "/var/lib/letsencrypt:/var/lib/letsencrypt"
+    - "/letsencrypt-webroot:/var/www"
+  command:  certonly --webroot --renew-by-default --email ${LETSENCRYPT_EMAIL} --agree-tos --rsa-key-size 4096  -w /var/www -d ${LETSENCRYPT_DOMAINS}
+  
+  
+web:
+  build: .
+  ports:
+   - 80:80
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /letsencrypt-webroot:/letsencrypt-webroot
+ 
