@@ -1,5 +1,6 @@
-FROM smizy/docker-nginx-alpine
-MAINTAINER smizy
+# FROM smizy/docker-nginx-alpine
+# MAINTAINER smizy
 
-COPY server.conf ssl.conf  /etc/nginx/conf.d/
+
+# COPY server.conf ssl.conf  /etc/nginx/conf.d/
 
