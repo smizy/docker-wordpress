@@ -33,6 +33,7 @@ $ export MYSQL_DATABASE=******;
 $ export MYSQL_USER=******;
 $ export MYSQL_PASSWORD=******;
 $ export MYSQL_HOST=mysql
+$ export DEPLOY_ENV=production
 
 docker-compose up -d
 ```
